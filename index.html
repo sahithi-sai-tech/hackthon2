@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Field Scout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#overview"><span class="brand-mark">⌁</span><span>AI Field Scout<small>Observe. Understand. Act.</small></span></a>
+        <nav><a class="active" href="#overview">Field Overview</a><a href="#scan">Scan Field</a><a href="#history">Field History</a></nav>
+        <button class="outline-btn demo-toggle" id="demoBtn">✦ Load demo</button>
+      </header>
+
+      <main>
+        <section class="hero" id="overview">
+          <div><p class="eyebrow">FIELD INTELLIGENCE • TOMATO</p><h1>Know what your<br /><em>field needs</em> next.</h1><p class="lede">Turn scattered crop observations into one clear field-level assessment and action plan.</p></div>
+          <div class="hero-actions"><button class="primary-btn" id="scanBtn">📷 Scan field <span>→</span></button><button class="text-btn" id="healthyBtn">View healthy demo</button></div>
+        </section>
+
+        <section class="field-heading">
+          <div><div class="crumb">MY FIELDS / <span>MAIN TOMATO FIELD</span></div><h2>Main Tomato Field <span class="pill">Flowering</span></h2><p>2 acres · Kolar, Karnataka <span class="dot">•</span> Last scan today, 8:45 AM</p></div>
+          <div class="field-meta"><span class="weather-icon">☀</span><div><strong>28°C</strong><small>Warm & humid</small></div></div>
+        </section>
+
+        <section class="overview-grid">
+          <article class="panel field-map-panel">
+            <div class="panel-top"><div><p class="section-kicker">FIELD OVERVIEW</p><h3>Scanned observation points</h3></div><button class="small-action" id="addObsMap">+ Add point</button></div>
+            <div class="field-map" id="fieldMap">
+              <div class="map-label n">NORTH</div><div class="map-label s">SOUTH</div><div class="field-lines"></div>
+              <button class="pin healthy" style="left:18%;top:25%" data-id="A1"><span>A1</span></button>
+              <button class="pin attention" style="left:67%;top:22%" data-id="A2"><span>A2</span></button>
+              <button class="pin attention" style="left:45%;top:49%" data-id="B1"><span>B1</span></button>
+              <button class="pin urgent" style="left:26%;top:73%" data-id="C1"><span>C1</span></button>
+              <button class="pin attention" style="left:74%;top:70%" data-id="C2"><span>C2</span></button>
+              <span class="field-crop crop1">⌇</span><span class="field-crop crop2">⌇</span><span class="field-crop crop3">⌇</span><span class="field-crop crop4">⌇</span><span class="field-crop crop5">⌇</span>
+            </div>
+            <div class="legend"><span><i class="l-dot green"></i>Low concern</span><span><i class="l-dot yellow"></i>Monitor</span><span><i class="l-dot red"></i>High concern</span><span class="sample">5 points sampled</span></div>
+          </article>
+
+          <article class="panel health-panel">
+            <p class="section-kicker">AI-ESTIMATED FIELD HEALTH</p>
+            <div class="health-main"><div class="score-ring"><strong id="score">64</strong><span>/100</span></div><div><h3 id="status">Moderate concern</h3><p id="healthText">A pattern needs attention.</p></div></div>
+            <div class="meter"><span id="meterFill"></span></div>
+            <div class="mini-stats"><div><b id="lowCount">1</b><span>Low concern</span></div><div><b id="attentionCount">3</b><span>Monitor</span></div><div><b id="highCount">1</b><span>High concern</span></div></div>
+            <div class="confidence-note">✦ <span>Based on <b id="sampleCount">5</b> scanned points—not the entire field.</span></div>
+          </article>
+        </section>
+
+        <section class="insight-strip">
+          <div class="priority-card"><div class="priority-icon">!</div><div><p class="section-kicker">WHERE TO LOOK FIRST</p><h3>South section <span>High priority</span></h3><p id="priorityWhy">More severe leaf damage was observed here than in other scanned locations.</p></div><button class="arrow-btn" data-id="C1">→</button></div>
+          <div class="pattern-card"><p class="section-kicker">RECURRING PATTERN</p><h3>Fungal-like symptoms <b>3 / 5</b></h3><p>Among the areas you scanned, similar spotting and yellowing appear in multiple points.</p></div>
+        </section>
+
+        <section class="lower-grid">
+          <article class="panel action-panel"><div class="panel-top"><div><p class="section-kicker">WHAT TO DO NEXT</p><h3>Field action plan</h3></div><span class="plan-badge">Weather-aware</span></div>
+            <ol class="action-list"><li><span>1</span><div><b>Inspect the south section first</b><p>Check nearby plants and lower leaves for similar symptoms.</p></div></li><li><span>2</span><div><b>Remove heavily affected plant material</b><p>Only where appropriate; follow local agricultural guidance.</p></div></li><li><span>3</span><div><b>Rescan after the weather change</b><p>Compare the same areas in 2–3 days.</p></div></li></ol>
+            <button class="primary-btn full" id="rescanBtn">↻ Start a rescan</button>
+          </article>
+          <article class="panel weather-panel"><div class="panel-top"><div><p class="section-kicker">FIELD CONDITIONS</p><h3>Weather context</h3></div><span class="rain-icon">☂</span></div><div class="weather-stats"><div><b>81%</b><span>Humidity</span></div><div><b>70%</b><span>Rain chance</span></div><div><b>Tonight</b><span>Expected rain</span></div></div><div class="weather-note"><b>Best action window: Tomorrow morning</b><p>Rain tonight may favor fungal spread. Avoid weather-sensitive treatments before rainfall, and follow approved local guidance.</p></div></article>
+        </section>
+
+        <section class="copilot panel"><div class="copilot-icon">✦</div><div class="copilot-copy"><p class="section-kicker">FIELD COPILOT</p><h3>Ask about this scan</h3><p id="copilotAnswer">I’m ready to help you decide what to inspect next.</p><div class="suggestions"><button>Which area first?</button><button>Is this spreading?</button><button>What should I check tomorrow?</button></div></div><form id="copilotForm"><input id="copilotInput" placeholder="Ask about your field..." /><button aria-label="Send">↑</button></form></section>
+
+        <section class="history-section" id="history"><div class="section-title"><div><p class="section-kicker">FIELD HISTORY</p><h2>How this field is changing</h2></div><button class="text-btn">View all scans →</button></div><div class="history-list"><button class="history-current"><span class="date">TODAY<br/><b>AUG 8</b></span><span><b>64</b><small>Moderate concern</small></span><span class="history-trend down">↓ 8 pts</span><span class="history-detail">South section needs attention</span></button><button><span class="date">AUG 5</span><span><b>72</b><small>Moderate concern</small></span><span class="history-trend">—</span><span class="history-detail">Minor leaf spotting observed</span></button><button><span class="date">AUG 2</span><span><b>81</b><small>Low concern</small></span><span class="history-trend up">↑ 4 pts</span><span class="history-detail">Regular monitoring</span></button></div></section>
+      </main>
+    </div>
+
+    <dialog id="observationDialog"><form method="dialog" class="modal"><button class="close" value="cancel">×</button><p class="section-kicker">NEW OBSERVATION</p><h2>Add a field point</h2><p class="modal-copy">Add a photo and mark roughly where it was captured.</p><label class="upload-box" for="imageInput"><input type="file" id="imageInput" accept="image/*" /><span id="uploadHint">📷 <b>Upload a crop photo</b><small>JPG, PNG — clearer leaf details help</small></span><img id="preview" alt="Observation preview" /></label><label>Location<select id="locationSelect"><option>North</option><option>Center</option><option selected>South</option><option>East</option><option>West</option></select></label><label>Optional note<textarea placeholder="e.g. Leaves started turning yellow this week"></textarea></label><button class="primary-btn full" value="default" id="saveObs">Add observation</button></form></dialog>
+
+    <dialog id="detailDialog"><div class="modal detail-modal"><button class="close" id="closeDetail">×</button><div class="detail-head"><span class="detail-status" id="detailDot"></span><div><p class="section-kicker" id="detailLocation">SOUTH SECTION</p><h2>Observation <span id="detailId">C1</span></h2></div></div><div class="leaf-illustration">⌁<span>⌁</span></div><div class="detail-grid"><div><small>OBSERVED SYMPTOMS</small><p id="detailSymptoms"></p></div><div><small>AI ASSESSMENT</small><p id="detailIssue"></p></div></div><div class="why-box"><b>Why this status?</b><p id="detailWhy"></p></div><h3>What to check nearby</h3><ul><li>Nearby plants and lower leaves</li><li>New growth and leaf undersides</li><li>Whether symptoms repeat across rows</li></ul></div></dialog>
+
+    <div class="scan-toast" id="scanToast"><div class="scan-card"><span class="scan-orbit"></span><p class="section-kicker">ANALYZING FIELD</p><h2 id="scanStage">Images received</h2><div class="steps"><span class="done">✓ Images received</span><span>• Individual observations analyzed</span><span>• Symptoms compared</span><span>• Field patterns identified</span><span>• Weather checked</span><span>• Action plan generated</span></div></div></div>
+    <script src="app.js"></script>
+  </body>
+</html>
